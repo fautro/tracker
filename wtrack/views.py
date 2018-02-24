@@ -6,4 +6,4 @@ def index(request):
     return render(request, 'wtrack/index.html', context=context_dict)
 
 def about(request):
-    return HttpResponse("This is a future \"About\" page.")
+    return render(request, 'wtrack/about.html')
