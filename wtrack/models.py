@@ -23,7 +23,7 @@ class Record(models.Model):
         ('N', 'NO')
     )
 
-    date = models.DateField(auto_now=False, auto_now_add=False)
+    date = models.DateField(auto_now=False, auto_now_add=False, primary_key=True)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = models.SmallIntegerField()
     calories_consumed = models.SmallIntegerField()
@@ -44,15 +44,13 @@ class Record(models.Model):
 class MorningWeight(models.Model):
     date = models.OneToOneField(
         Record,
-        on_delete=models.CASCADE,
-        primary_key=True,
+        on_delete=models.CASCADE
     )
     morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
 class EveningWeight(models.Model):
     date = models.OneToOneField(
         Record,
-        on_delete=models.CASCADE,
-        primary_key=True,
+        on_delete=models.CASCADE
     )
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
