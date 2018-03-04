@@ -1,7 +1,7 @@
 from django.db import models
 import datetime as dt
 
-class Weight(models.Model):
+class Record(models.Model):
     CLIMBING_FLAGS = (
         ('B', 'Bouldering'),
         ('BM', 'Bouldering on Moonboard'),
@@ -24,9 +24,7 @@ class Weight(models.Model):
     )
 
     date = models.DateField(auto_now=False, auto_now_add=False)
-    day = models.CharField(max_length=3, default=day_of_week(date))
-    morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
-    evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
+    ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = models.SmallIntegerField()
     calories_consumed = models.SmallIntegerField()
     climbing_flag = models.CharField(max_length=2, choices=CLIMBING_FLAGS)
@@ -36,7 +34,24 @@ class Weight(models.Model):
     def __str__(self):
         return self.date
 
-    def day_of_week(date):
-        day_nr = dt.datetime(date).weekday()
-        day_arr = ['Mo', 'Tue', 'Wed', 'Thu', 'Fr', 'Sat', 'Sun']
-        return day_arr[day_nr]
+    ##def day_of_week(self.date):
+    ##    day_nr = dt.datetime.weekday(date)
+    ##    day_arr = ['Mo', 'Tue', 'Wed', 'Thu', 'Fr', 'Sat', 'Sun']
+    ##    return day_arr[day_nr]
+
+
+class MorningWeight(models.Model):
+    date = models.OneToOneField(
+        Record,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+    morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
+
+class EveningWeight(models.Model):
+    date = models.OneToOneField(
+        Record,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+    evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
