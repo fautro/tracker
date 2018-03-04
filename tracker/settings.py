@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.1.158']
 
+STATIC_URL = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')   # getting path to the static folder
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [STATIC_DIR, STATIC_ROOT, ]   # adding static dir
 
 # Application definition
 
@@ -121,10 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'static')   # getting path to the static folder
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [STATIC_DIR, STATIC_ROOT, ]   # adding static dir
+
 
 
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
