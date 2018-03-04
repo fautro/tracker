@@ -49,8 +49,7 @@ class MorningWeight(models.Model):
     morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        sDate = self.date.isoformat()
-        return sDate
+        return self.date
 
 class EveningWeight(models.Model):
     date = models.OneToOneField(
@@ -60,5 +59,5 @@ class EveningWeight(models.Model):
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        sDate = self.date.isoformat()
-        return sDate
+       # sDate = self.date.isoformat()
+        return self.date
