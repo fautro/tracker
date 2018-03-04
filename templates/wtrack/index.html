@@ -9,7 +9,18 @@
     <h1>Weight tracker.. </h1>
     <div>
         ..is about to land! <br>
-        <strong> {{ boldmessage }}</strong><br>
+
+    </div>
+    <div>
+        {% if records %}
+        <ul>
+            {% for record in records %}
+            <li>{{ record.date }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>No records available.</strong>
+        {% endif %}
     </div>
     <div>
         <img src="{% static "images/goat.png" %}" alt="Pic of a goat" />
