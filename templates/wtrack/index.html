@@ -14,8 +14,10 @@
     <div>
         {% if records %}
         <ul>
-            {% for record in records %}
-            <li>{{ record }}</li>
+            {% for instance in records %}
+                {% for field, value in instance %}
+                    <li>{{ value }}</li>
+                {% endfor %}
             {% endfor %}
         </ul>
         {% else %}
