@@ -13,15 +13,25 @@
     </div>
     <div>
         {% if records %}
-        <ul>
+        <table style="width:40%">
+            <tr>
+                <th>Date</th>
+                <th>Morning Weight</th>
+                <th>Evening Weight</th>
+                <th>Hours of Sleep</th>
+                <th>Calories Consumed</th>
+                <th>Climbing Session</th>
+                <th>Gym Session</th>
+                <th>Alcohol</th>
+            </tr>
             {% for record in records %}
-            <li>
-                {{ record.date }} {{record.morningweight__morning_weight }} {{record.eveningweight__evening_weight }}
-                {{ record.sleep_hours }} {{ record.calories_consumed }} {{ record.climbing_flag }}
-                {{ record.gym_flag }} {{record.alco_flag }}
-            </li>
+                <tr>
+                <td>{{ record.date }}</td> <td>{{record.morningweight__morning_weight }}</td> <td>{{record.eveningweight__evening_weight }}</td>
+                <td>{{ record.sleep_hours }}</td> <td>{{ record.calories_consumed }}</td> <td>{{ record.climbing_flag }}</td>
+                <td>{{ record.gym_flag }}</td> <td>{{record.alco_flag }}</td>
+                </tr>
             {% endfor %}
-        </ul>
+        </table>
         {% else %}
             <strong>No records available.</strong>
         {% endif %}
