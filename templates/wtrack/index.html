@@ -15,8 +15,7 @@
         {% if records %}
         <ul>
             {% for record in records %}
-            <li>{{ record.date }} {{ record.sleep_hours }} {{ record.calories_consumed }}
-                {{ record.climbing_flag }} {{ record.gym_flag }} {{ record.alco_flag }}</li>
+            <li>{{ record }}</li>
             {% endfor %}
         </ul>
         {% else %}
