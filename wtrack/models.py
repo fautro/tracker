@@ -32,8 +32,7 @@ class Record(models.Model):
     alco_flag = models.CharField(max_length=1, choices=ALCO_FLAGS)
 
     def __str__(self):
-        sDate = self.date.isoformat()
-        return sDate
+        return str(self.date)
 
     ##def day_of_week(self.date):
     ##    day_nr = dt.datetime.weekday(date)
