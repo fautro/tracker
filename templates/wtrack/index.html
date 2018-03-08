@@ -26,9 +26,14 @@
             </tr>
             {% for record in records %}
                 <tr>
-                <td>{{ record.date }}</td> <td>{{ record.morningweight__morning_weight }}</td> <td>{{ record.eveningweight__evening_weight }}</td>
-                <td>{{ record.sleep_hours }}</td> <td>{{ record.calories_consumed }}</td> <td>{{ record.climbing_flag.display }}</td>
-                <td>{{ record.get_gym_flag_display }}</td> <td>{{ record.get_alco_flag_display }}</td>
+                <td>{{ record.date }}</td>
+                <td>{{ record.morningweight__morning_weight }}</td>
+                <td>{{ record.eveningweight__evening_weight }}</td>
+                <td>{{ record.sleep_hours }}</td>
+                <td>{{ record.calories_consumed }}</td>
+                <td>{{ record.climbing_flag }}</td>
+                <td>{{ record.gym_flag }}</td>
+                <td>{{ record.alco_flag }}</td>
                 </tr>
             {% endfor %}
         </table>
