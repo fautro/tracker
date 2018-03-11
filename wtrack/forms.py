@@ -27,9 +27,9 @@ class RecordForm(forms.ModelForm):
     ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
-    climbing_flag = forms.CharField(max_length=2, widget=forms.Select())#choices=CLIMBING_FLAGS)
-    gym_flag = forms.CharField(max_length=2, widget=forms.Select())#choices=GYM_FLAGS)
-    alco_flag = forms.CharField(max_length=2, widget=forms.Select(), required=True)#choices=ALCO_FLAGS)
+    climbing_flag = forms.CharField(max_length=2, widget=forms.Select(choices=CLIMBING_FLAGS))
+    gym_flag = forms.CharField(max_length=2, widget=forms.Select(choices=GYM_FLAGS))
+    alco_flag = forms.CharField(max_length=2, widget=forms.Select(choices=ALCO_FLAGS), required=True)
 
     class Meta:
         model = Record
