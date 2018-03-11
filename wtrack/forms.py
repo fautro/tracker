@@ -36,7 +36,7 @@ class RecordForm(forms.ModelForm):
         exclude = ()
 
 class MorningWeightForm(forms.ModelForm):
-    date = forms.ChoiseField(choices=Record.objects.values('date').order_by('-date'), required=True)
+    date = forms.ChoiceField(choices=Record.objects.values('date').order_by('-date'), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2)
 
     class Meta:
@@ -44,7 +44,7 @@ class MorningWeightForm(forms.ModelForm):
         exclude = ()
 
 class EveningWeightForm(form.ModelForm):
-    date = forms.ChoiseField(choices=Record.objects.values('date').order_by('-date'), required=True)
+    date = forms.ChoiceField(choices=Record.objects.values('date').order_by('-date'), required=True)
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
     class Meta:
