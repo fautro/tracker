@@ -42,6 +42,7 @@ def add_morning_weight(request):
             print(form.errors)
     return render(request, 'wtrack/add_record.html', {'form': form})
 
+
 def add_evening_weight(request):
 
     form = EveningWeightForm()
