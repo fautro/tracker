@@ -7,7 +7,17 @@
 <body>
     <form id="add_record_form" method="post" action="/wtrack/add_record/">
  {% csrf_token %}
- {% for field in form.visible_fields %}
+ {% for field in form_rec.visible_fields %}
+ {{ field.errors }}
+ {{ field.help_text }}
+ {{ field }}
+ {% endfor %}
+ {% for field in form_ew.visible_fields %}
+ {{ field.errors }}
+ {{ field.help_text }}
+ {{ field }}
+ {% endfor %}
+ {% for field in form_ew.visible_fields %}
  {{ field.errors }}
  {{ field.help_text }}
  {{ field }}
