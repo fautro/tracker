@@ -29,6 +29,7 @@ def add_record(request):
     return render(request, 'wtrack/add_record.html', {'form': form})
 
 def add_morning_weight(request):
+
     form = MorningWeightForm()
 
     if request.method == 'POST':
@@ -39,10 +40,11 @@ def add_morning_weight(request):
             return index(request)
         else:
             print(form.errors)
-            return render(request, 'wtrack/add_record.html', {'form': form})
-def add_evening_weight(request):
-    form = EveningWeightForm()
+    return render(request, 'wtrack/add_record.html', {'form': form})
 
+def add_evening_weight(request):
+
+    form = EveningWeightForm()
     if request.method == 'POST':
         form = EveningWeightForm(request.POST)
 
@@ -51,4 +53,4 @@ def add_evening_weight(request):
             return index(request)
         else:
             print(form.errors)
-            return render(request, 'wtrack/add_record.html', {'form': form})
+    return render(request, 'wtrack/add_record.html', {'form': form})
