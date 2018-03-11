@@ -40,7 +40,7 @@ class MorningWeightForm(forms.ModelForm):
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2)
 
     class Meta:
-        model = MorningWeight,
+        model = MorningWeight
         exclude = ()
 
 class EveningWeightForm(form.ModelForm):
