@@ -9,10 +9,12 @@
      {% csrf_token %}
      {{ weight }}
     <input type="submit" name="submit_weight" value="Submit Morning Weight" />
+    </form>
 
      <form id="weight_form" method="post" action="/wtrack/add_record/">
       {% csrf_token %}
       {{ additions }}
      <input type="submit" name="sumbit_addition" value="Submit Additional Fields" />
+     </form>
 </body>
 </html>
