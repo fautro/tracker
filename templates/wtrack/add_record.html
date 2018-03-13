@@ -5,25 +5,14 @@
     <title>Add Record</title>
 </head>
 <body>
-    <form id="add_record_form" method="post" action="/wtrack/add_record/">
- {% csrf_token %}
- {% for field in form_rec.visible_fields %}
- {{ field.errors }}
- {{ field.help_text }}
- {{ field }}
- {% endfor %}
+    <form id="weight_form" method="post" action="/wtrack/add_record/">
+     {% csrf_token %}
+     {{ weight }}
+    <input type="submit" name="submit_weight" value="Submit Morning Weight" />
 
- {% for field in form_ew.visible_fields %}
- {{ field.errors }}
- {{ field.help_text }}
- {{ field }}
- {% endfor %}
-
- {% for field in form_ew.visible_fields %}
- {{ field.errors }}
- {{ field.help_text }}
- {{ field }}
- {% endfor %}
- <input type="submit" name="submit" value="Create Category" />
+     <form id="weight_form" method="post" action="/wtrack/add_record/">
+      {% csrf_token %}
+      {{ additions }}
+     <input type="submit" name="sumbit_addition" value="Submit Additional Fields" />
 </body>
 </html>

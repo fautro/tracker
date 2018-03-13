@@ -1,7 +1,15 @@
 from django import forms
-from wtrack.models import Record, MorningWeight, EveningWeight
+from wtrack.models import Weight, Additions
 
-class RecordForm(forms.ModelForm):
+class WeightForm(forms.ModelForm):
+    date = forms.DateField(widget=forms.SelectDateWidget(), required=True)
+    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
+
+    class Meta:
+        model = Weight
+        exclude = ()
+
+class AdditionsForm(forms.ModelForm):
     CLIMBING_FLAGS = (
         ('B', 'Bouldering'),
         ('BM', 'Bouldering on Moonboard'),
@@ -23,7 +31,7 @@ class RecordForm(forms.ModelForm):
         ('N', 'NO')
     )
 
-    date = forms.DateField(widget=forms.SelectDateWidget(), required=True)
+    date = forms.ModelChoiceField(queryset=Weight.objects.values('date').order_by('-date')[:30], required=True)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
@@ -32,21 +40,5 @@ class RecordForm(forms.ModelForm):
     alco_flag = forms.CharField(max_length=2, widget=forms.Select(choices=ALCO_FLAGS), required=True)
 
     class Meta:
-        model = Record
-        exclude = ()
-
-class MorningWeightForm(forms.ModelForm):
-    date = forms.ChoiceField(choices=Record.objects.values('date').order_by('-date'), required=True)
-    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2)
-
-    class Meta:
-        model = MorningWeight
-        exclude = ()
-
-class EveningWeightForm(forms.ModelForm):
-    date = forms.ChoiceField(choices=Record.objects.values('date').order_by('-date'), required=True)
-    evening_weight = forms.DecimalField(max_digits=5, decimal_places=2)
-
-    class Meta:
-        model = EveningWeight
+        model = Additions
         exclude = ()
