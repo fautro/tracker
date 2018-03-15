@@ -31,7 +31,7 @@ class AdditionsForm(forms.ModelForm):
         ('N', 'NO')
     )
 
-    DATE_QUERYSET = ['2018-01-01','2018-01-02']
+    DATE_QUERYSET = [('2018-01-01','2018-01-01')]
     #for result in Weight.objects.values('date').order_by('-date')[:30]:
     #    DATE_QUERYSET.append(str(result['date']))
 
