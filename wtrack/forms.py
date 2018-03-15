@@ -31,9 +31,9 @@ class AdditionsForm(forms.ModelForm):
         ('N', 'NO')
     )
 
-    DATE_QUERYSET = [('2018-01-01','2018-01-01')]
-    #for result in Weight.objects.values('date').order_by('-date')[:30]:
-    #    DATE_QUERYSET.append(str(result['date']))
+    DATE_QUERYSET = []
+    for result in Weight.objects.values('date').order_by('-date')[:30]:
+        DATE_QUERYSET.append(tuple(str(result['date']),str(result['date'])))
 
     date = forms.ChoiceField(choices=DATE_QUERYSET)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
