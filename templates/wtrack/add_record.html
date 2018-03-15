@@ -7,13 +7,13 @@
 <body>
     <form id="weight_form" method="post" action="">
      {% csrf_token %}
-     {{ weight }}
+     {{ weight }}<br>
     <input type="submit" name="submit_weight" value="Submit Morning Weight" />
     </form>
 <br><br><br>
      <form id="additions_form" method="post" action="">
       {% csrf_token %}
-      {{ additions }}
+      {{ additions }}<br>
      <input type="submit" name="submit_addition" value="Submit Additional Fields" />
      </form>
 </body>
