@@ -35,7 +35,7 @@ class AdditionsForm(forms.ModelForm):
     for result in Weight.objects.values('date').order_by('-date')[:30]:
         DATE_QUERYSET.append(result['date'])
 
-    date = forms.ModelChoiceField(queryset=Weight.objects.values('date').order_by('-date')[:30], to_field_name='date')
+    date = forms.ChoiceField(choices=DATE_QUERYSET)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
