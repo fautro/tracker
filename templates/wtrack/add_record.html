@@ -7,7 +7,8 @@
 <body>
     <form id="weight_form" method="post" action="">
      {% csrf_token %}
-     <br>{{ weight }}<br>
+     <br>{{ weight.date }}<br>
+     <br>{{ weight.morning_weight }}<br>
     <input type="submit" name="submit_weight" value="Submit Morning Weight" />
     </form>
 <br><br><br>
