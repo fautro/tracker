@@ -22,7 +22,7 @@ def add_record(request):
         additions_form = AdditionsForm(request.POST)
         if 'submit_weight' in request.POST and weight_form.is_valid():
             weight_form.save()
-        elif 'submit_addition' in request.POST and additions_form.is_valid():
+        if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
 
     else:
