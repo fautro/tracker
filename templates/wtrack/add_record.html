@@ -14,7 +14,12 @@
 <br><br><br>
      <form id="additions_form" method="post" action="">
       {% csrf_token %}
-      <br>{{ additions }}<br>
+      <br>{{ additions.date }}<br>
+      <br>{{ additions.sleep_hours }}<br>
+      <br>{{ additions.calories_consumed }}<br>
+      <br>{{ additions.climbing_flag }}<br>
+      <br>{{ additions.gym_flag }}<br>
+      <br>{{ additions.alco_flag }}<br>
      <input type="submit" name="submit_addition" value="Submit Additional Fields" />
      </form>
 </body>
