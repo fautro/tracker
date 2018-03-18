@@ -44,4 +44,5 @@ class AdditionsForm(forms.ModelForm):
         exclude = ()
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['date'].queryset = Weight.objects.all().order_by('-date')[:30]
+        set = Weight.objects.all().order_by('-date')[:30]
+        self.fields['date'].queryset = set
