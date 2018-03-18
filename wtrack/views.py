@@ -24,6 +24,7 @@ def add_record(request):
             weight_form.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
+            return render(request, 'wtrack/index.html', {})
 
     else:
         weight_form = WeightForm(request.POST)
