@@ -1,6 +1,6 @@
 from django import forms
 from wtrack.models import Weight, Additions
-from date import date
+from datetime import date
 from datetime import timedelta
 
 class WeightForm(forms.ModelForm):
