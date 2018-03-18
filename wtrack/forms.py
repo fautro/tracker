@@ -1,5 +1,7 @@
 from django import forms
 from wtrack.models import Weight, Additions
+from date import date
+from datetime import timedelta
 
 class WeightForm(forms.ModelForm):
     date = forms.DateField(widget=forms.SelectDateWidget(), required=True)
@@ -44,5 +46,6 @@ class AdditionsForm(forms.ModelForm):
         exclude = ()
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        set = Weight.objects.all().order_by('-date')[:30]
+        date_set = date.today() - timedelta(days=30)
+        set = Weight.objects.filter(date__gte = date_set).order_by('-date')
         self.fields['date'].queryset = set
