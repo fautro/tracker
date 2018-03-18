@@ -1,6 +1,11 @@
 from django import forms
 from wtrack.models import Weight, Additions
 
+DATE_QUERYSET = []
+for result in Weight.objects.values('date').order_by('-date')[:30]:
+    date_tuple = (str(result['date']), str(result['date']))
+    DATE_QUERYSET.append(date_tuple)
+
 class WeightForm(forms.ModelForm):
     date = forms.DateField(widget=forms.SelectDateWidget(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
@@ -30,11 +35,6 @@ class AdditionsForm(forms.ModelForm):
         ('Y', 'YES'),
         ('N', 'NO')
     )
-
-    DATE_QUERYSET = []
-    for result in Weight.objects.values('date').order_by('-date')[:30]:
-        date_tuple = (str(result['date']),str(result['date']))
-        DATE_QUERYSET.append(date_tuple)
 
     date = forms.ChoiceField(choices=DATE_QUERYSET)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
