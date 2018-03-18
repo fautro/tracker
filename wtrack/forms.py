@@ -31,7 +31,7 @@ class AdditionsForm(forms.ModelForm):
         ('N', 'NO')
     )
 
-    date = forms.ModelChoiceField(queryset=Weight.objects.all().order_by('-date'))
+    date = forms.ModelChoiceField(queryset=None)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
@@ -42,3 +42,6 @@ class AdditionsForm(forms.ModelForm):
     class Meta:
         model = Additions
         exclude = ()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['date'].queryset = Weight.objects.all().order_by('-date')[:30]
