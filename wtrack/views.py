@@ -13,6 +13,9 @@ def index(request):
 def about(request):
     return render(request, 'wtrack/about.html')
 
+def test(request):
+    return render(request, 'wtrack/index2.html')
+
 def add_record(request):
 
     context = {}
