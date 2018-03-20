@@ -14,7 +14,12 @@ def about(request):
     return render(request, 'wtrack/about.html')
 
 def test(request):
-    return render(request, 'wtrack/index2.html')
+    record_list = Weight.objects.values('date', 'morning_weight', 'additions__sleep_hours',
+                                        'additions__calories_consumed', \
+                                        'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
+                                        'additions__evening_weight').order_by('-date')[:30]
+    context_dict = {'records': record_list}
+    return render(request, 'wtrack/index2.html', context=context_dict)
 
 def add_record(request):
 
