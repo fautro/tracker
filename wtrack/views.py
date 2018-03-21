@@ -8,10 +8,7 @@ def index(request):
                                         'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
                                         'additions__evening_weight').order_by('-date')[:30]
 
-    graph_list = Weight.objects.values('date', 'morning_weight', 'additions__sleep_hours',
-                                        'additions__calories_consumed', \
-                                        'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
-                                        'additions__evening_weight').order_by('date')[:5]
+    graph_list = Weight.objects.values('date', 'morning_weight', 'additions__evening_weight').order_by('date')[5:]
     context_dict = {'records':      record_list,
                     'graph_points': graph_list}
 
