@@ -60,13 +60,13 @@
         <p class="lead">
             <form id="weight_form" method="post" action="">
              {% csrf_token %}
-             {{ weight.as_p }}<p>
+             {{ weight.as_p }}
             <input type="submit" name="submit_weight" value="Submit Morning Weight" />
             </form>
               <br><br><br>
              <form id="additions_form" method="post" action="">
               {% csrf_token %}
-              <br>{{ additions.as_p }}<p>
+              {{ additions.as_p }}
              <input type="submit" name="submit_addition" value="Submit Additional Fields" />
              </form>
        </p>
