@@ -7,7 +7,14 @@ def index(request):
     record_list = Weight.objects.values('date', 'morning_weight', 'additions__sleep_hours', 'additions__calories_consumed', \
                                         'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
                                         'additions__evening_weight').order_by('-date')[:30]
-    context_dict = {'records': record_list}
+
+    graph_list = Weight.objects.values('date', 'morning_weight', 'additions__sleep_hours',
+                                        'additions__calories_consumed', \
+                                        'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
+                                        'additions__evening_weight').order_by('date')[:5]
+    context_dict = {'records':      record_list,
+                    'graph_points': graph_list}
+
     return render(request, 'wtrack/index.html', context=context_dict)
 
 def about(request):
@@ -19,6 +26,7 @@ def test(request):
                                         'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
                                         'additions__evening_weight').order_by('-date')[:30]
     context_dict = {'records': record_list}
+
     return render(request, 'wtrack/index2.html', context=context_dict)
 
 def add_record(request):
