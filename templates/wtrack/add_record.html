@@ -25,7 +25,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <!--<div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -44,7 +44,7 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
-        </ul> 
+        </ul> -->
 <!---------------------------------------------------------------------------------------------------------------------->
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -54,23 +54,24 @@
     </nav>
 <!----------------------------------------------------------------------------------------------------------------------->
     <main role="main" class="container">
-
-      <div class="starter-template">
-        <h1>Add new record or add additional fields to existing one.</h1>
-        <p class="lead">
-            <form id="weight_form" method="post" action="">
-             {% csrf_token %}
-             {{ weight.as_p }}
-            <input type="submit" name="submit_weight" value="Submit Morning Weight" />
-            </form>
-              <br><br><br>
-             <form id="additions_form" method="post" action="">
-              {% csrf_token %}
-              {{ additions.as_p }}
-             <input type="submit" name="submit_addition" value="Submit Additional Fields" />
-             </form>
-       </p>
-      </div>
+      <div class="row">
+          <div class="col-md">
+            <h1>Add new record or add additional fields to existing one.</h1>
+            <p class="lead">
+                <form id="weight_form" method="post" action="">
+                 {% csrf_token %}
+                 {{ weight.as_p }}
+                <input type="submit" name="submit_weight" value="Submit Morning Weight" />
+                </form>
+                  <br><br><br>
+                 <form id="additions_form" method="post" action="">
+                  {% csrf_token %}
+                  {{ additions.as_p }}
+                 <input type="submit" name="submit_addition" value="Submit Additional Fields" />
+                 </form>
+           </p>
+          </div>
+    </div>
 
     </main><!-- /.container -->
 
