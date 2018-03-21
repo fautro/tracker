@@ -8,9 +8,9 @@ def index(request):
                                         'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
                                         'additions__evening_weight').order_by('-date')[:30]
 
-    graph_list = Weight.objects.values('date', 'morning_weight', 'additions__evening_weight').order_by('date')[5:]
+    graph_list = Weight.objects.values('date', 'morning_weight', 'additions__evening_weight').order_by('date')[:30]
     context_dict = {'records':      record_list,
-                    'graph_points': graph_list}
+                    'graph_points': graph_list.reverse()}
 
     return render(request, 'wtrack/index.html', context=context_dict)
 
