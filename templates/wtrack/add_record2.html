@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Record</title>
+</head>
+<body>
+    <form id="weight_form" method="post" action="">
+     {% csrf_token %}
+     <br>{{ weight }}
+    <input type="submit" name="submit_weight" value="Submit Morning Weight" />
+    </form>
+<br><br><br>
+     <form id="additions_form" method="post" action="">
+      {% csrf_token %}
+      <br>{{ additions }}<br>
+     <input type="submit" name="submit_addition" value="Submit Additional Fields" />
+     </form>
+</body>
+</html>
