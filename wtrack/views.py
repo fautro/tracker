@@ -10,7 +10,7 @@ def index(request):
 
     graph_list = Weight.objects.values('date', 'morning_weight', 'additions__evening_weight').order_by('date')[:30]
     context_dict = {'records':      record_list,
-                    'graph_points': graph_list.reverse()}
+                    'graph_points': graph_list}
 
     return render(request, 'wtrack/index.html', context=context_dict)
 
