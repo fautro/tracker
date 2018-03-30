@@ -236,7 +236,11 @@
             {% if records %}
                 data: [
                     {% for point in graph_points %}
-                      {{ point.additions__evening_weight }},
+                      {% if point.additions__evening_weight is None %}
+                        ,
+                      {% else %}
+                        {{ point.additions__evening_weight }},
+                      {% endif %}
                     {% endfor %}
                       ],
             {% else %}
@@ -244,9 +248,9 @@
             {% endif %}
             lineTension: 0,
             backgroundColor: 'transparent',
-            borderColor: 'red',
+            borderColor: '#dc3545',
             borderWidth: 4,
-            pointBackgroundColor: 'red'
+            pointBackgroundColor: '#dc3545'
           }]
         },
         options: {
