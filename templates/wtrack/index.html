@@ -232,6 +232,21 @@
             borderColor: '#007bff',
             borderWidth: 4,
             pointBackgroundColor: '#007bff'
+          },{
+            {% if records %}
+                data: [
+                    {% for point in graph_points %}
+                      {{ point.additions__evening_weight }},
+                    {% endfor %}
+                      ],
+            {% else %}
+                data: [],
+            {% endif %}
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: 'red',
+            borderWidth: 4,
+            pointBackgroundColor: 'red'
           }]
         },
         options: {
