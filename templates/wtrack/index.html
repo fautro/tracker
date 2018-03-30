@@ -108,7 +108,7 @@
                   <th>Date</th>
                   <th>Morning Weight</th>
                   <th>Evening Weight</th>
-                  <th>Hours of Sleep</th>
+                  <th>Sleep</th>
                   <th>Calories Consumed</th>
                   <th>Climbing Session</th>
                   <th>Gym Session</th>
@@ -123,7 +123,17 @@
                       <td>{{ record.additions__evening_weight }}</td>
                       <td>{{ record.additions__sleep_hours }}</td>
                       <td>{{ record.additions__calories_consumed}}</td>
-                      <td>{{ record.additions__climbing_flag }}</td>
+                      {% if record.additions__climbing_flag == "R" %}
+                        <td>Rest</td>
+                      {% elif record.additions__climbing_flag == "B" %}
+                        <td>Bouldering</td>
+                      {% elif record.additions__climbing_flag == "BM" %}
+                        <td>Moonboard</td>
+                      {% elif record.additions__climbing_flag == "L" %}
+                        <td>Lead</td>
+                      {% elif record.additions__climbing_flag == "D" %}
+                        <td>Dry</td>
+                      {% end if %}
                       <td>{{ record.additions__gym_flag }}</td>
                       <td>{{ record.additions__alco_flag }}</td>
                     </tr>

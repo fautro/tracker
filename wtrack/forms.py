@@ -12,6 +12,7 @@ class WeightForm(forms.ModelForm):
 
 class AdditionsForm(forms.ModelForm):
     CLIMBING_FLAGS = (
+        ('R', 'Rest'),
         ('B', 'Bouldering'),
         ('BM', 'Bouldering on Moonboard'),
         ('L', 'Lead'),
@@ -19,6 +20,7 @@ class AdditionsForm(forms.ModelForm):
     )
 
     GYM_FLAGS = (
+        ('R', 'Rest'),
         ('L', 'Leg Day'),
         ('LS', 'Leg Day Short'),
         ('U', 'Upper Body Day'),
