@@ -125,9 +125,19 @@
                       {% else %}
                         <td>{{ record.additions__evening_weight }}</td>
                       {% endif %}
-                      <td>{{ record.additions__evening_weight }}</td>
-                      <td>{{ record.additions__sleep_hours }}</td>
-                      <td>{{ record.additions__calories_consumed}}</td>
+
+                      {% if record.additions__sleep_hours is None %}
+                        <td>--</td>
+                      {% else %}
+                        <td>{{ record.additions__sleep_hours }}</td>
+                      {% endif %}
+
+                      {% if record.additions__calories_consumed is None %}
+                        <td>--</td>
+                      {% else %}
+                        <td>{{ record.additions__calories_consumed }}</td>
+                      {% endif %}
+
                       {% if record.additions__climbing_flag == "R" %}
                         <td>Rest</td>
                       {% elif record.additions__climbing_flag == "B" %}
@@ -138,9 +148,33 @@
                         <td>Lead</td>
                       {% elif record.additions__climbing_flag == "D" %}
                         <td>Dry</td>
+                      {% elif record.additions__climbing_flag is None %}
+                        <td>--</td>
                       {% endif %}
-                      <td>{{ record.additions__gym_flag }}</td>
-                      <td>{{ record.additions__alco_flag }}</td>
+
+                      {% if record.additions__gym_flag == "R" %}
+                        <td>Rest</td>
+                      {% elif record.additions__gym_flag == "L" %}
+                        <td>Leg Day</td>
+                      {% elif record.additions__gym_flag == "LS" %}
+                        <td>Leg Day (Short)</td>
+                      {% elif record.additions__gym_flag == "U" %}
+                        <td>Upper Body</td>
+                      {% elif record.additions__gym_flag == "US" %}
+                        <td>Upper Body (Short)</td>
+                      {% elif record.additions__gym_flag == "W" %}
+                        <td>Whole Body</td>
+                      {% elif record.additions__gym_flag == "C" %}
+                        <td>Cardio</td>
+                      {% elif record.additions__gym_flag is None %}
+                        <td>--</td>
+                      {% endif %}
+
+                      {% if record.additions__alco_flag is None %}
+                        <td>--</td>
+                      {% else %}
+                        <td>{{ record.additions__alco_flag }}</td>
+                      {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
