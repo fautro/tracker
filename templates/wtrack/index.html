@@ -220,7 +220,7 @@
     //<!------------------------DATASET BLOCK------------------------------->
           datasets: [{
             label: "Morning",
-            fill: false,
+            fill: true,
             {% if records %}
                 data: [
                     {% for point in graph_points %}
@@ -237,7 +237,7 @@
             pointBackgroundColor: '#007bff'
           },{
             label: "Evening",
-            fill: false,
+            fill: true,
             {% if records %}
                 data: [
                     {% for point in graph_points %}
