@@ -120,6 +120,11 @@
                     <tr>
                       <td>{{ record.date }}</td>
                       <td>{{ record.morning_weight }}</td>
+                      {% if record.additions__evening_weight == "None"}
+                        <td>--</td>
+                      {% else %}
+                        <td>{{ record.additions__evening_weight }}</td>
+                      {% endif %}
                       <td>{{ record.additions__evening_weight }}</td>
                       <td>{{ record.additions__sleep_hours }}</td>
                       <td>{{ record.additions__calories_consumed}}</td>
