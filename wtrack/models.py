@@ -10,6 +10,7 @@ class Weight(models.Model):
 
 class Additions(models.Model):
     CLIMBING_FLAGS = (
+        ('R', 'Rest'),
         ('B', 'Bouldering'),
         ('BM', 'Bouldering on Moonboard'),
         ('L', 'Lead'),
@@ -17,6 +18,7 @@ class Additions(models.Model):
     )
 
     GYM_FLAGS = (
+        ('R', 'Rest'),
         ('L', 'Leg Day'),
         ('LS', 'Leg Day Short'),
         ('U', 'Upper Body Day'),
