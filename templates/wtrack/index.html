@@ -211,7 +211,7 @@
           {% if graph_points %}
               labels: [
                   {% for point in graph_points %}
-                    "{{ point.date|slice:"-30:" }}",
+                    "{{ point.date }}",
                   {% endfor %}
                     ],
           {% else %}
@@ -224,7 +224,7 @@
             {% if records %}
                 data: [
                     {% for point in graph_points %}
-                      {{ point.morning_weight }},
+                      {{ point.morning_weight|slice:"-30:" }},
                     {% endfor %}
                       ],
             {% else %}
