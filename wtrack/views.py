@@ -8,7 +8,7 @@ def index(request):
                                         'additions__climbing_flag', 'additions__gym_flag', 'additions__alco_flag', \
                                         'additions__evening_weight').order_by('-date')[:30]
 
-    graph_list = Weight.objects.values('date', 'morning_weight', 'additions__evening_weight').order_by('-date')[:30].reverse()
+    graph_list = reversed(Weight.objects.values('date', 'morning_weight', 'additions__evening_weight').order_by('-date')[:30])
     context_dict = {'records':      record_list,
                     'graph_points': graph_list}
 
