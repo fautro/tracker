@@ -210,7 +210,7 @@
         data: {
           {% if graph_points %}
               labels: [
-                  {% for point in graph_points|dictsortreversed %}
+                  {% for point in graph_points|dictsortreversed:"date" %}
                     "{{ point.date }}",
                   {% endfor %}
                     ],
@@ -223,7 +223,7 @@
             fill: false,
             {% if records %}
                 data: [
-                    {% for point in graph_points|dictsortreversed %}
+                    {% for point in graph_points|dictsortreversed:"date" %}
                       {{ point.morning_weight }},
                     {% endfor %}
                       ],
@@ -240,7 +240,7 @@
             fill: false,
             {% if records %}
                 data: [
-                    {% for point in graph_points|dictsortreversed %}
+                    {% for point in graph_points|dictsortreversed:"date" %}
                       {% if point.additions__evening_weight is None %}
                         ,
                       {% else %}
