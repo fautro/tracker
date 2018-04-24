@@ -210,7 +210,7 @@
         data: {
           {% if graph_points %}
               labels: [
-                  {% for point in graph_points %}
+                  {% for point in graph_points|slice:"-30:" %}
                     "{{ point.date }}",
                   {% endfor %}
                     ],
@@ -223,8 +223,8 @@
             fill: false,
             {% if records %}
                 data: [
-                    {% for point in graph_points %}
-                      {{ point.morning_weight|slice:"-30:" }},
+                    {% for point in graph_points|slice:"-30:" %}
+                      {{ point.morning_weight }},
                     {% endfor %}
                       ],
             {% else %}
@@ -240,7 +240,7 @@
             fill: false,
             {% if records %}
                 data: [
-                    {% for point in graph_points %}
+                    {% for point in graph_points|slice:"-30:" %}
                       {% if point.additions__evening_weight is None %}
                         ,
                       {% else %}
