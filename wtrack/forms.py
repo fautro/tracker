@@ -16,12 +16,12 @@ class WeightForm(forms.ModelForm):
         return cleaned_data
 
     def calc_hash(self, username, date):
-        hash_obj = hashlib.md5((username + date).encode())
+        hash_obj = hashlib.md5((username + str(date)).encode())
         HKY = hash_obj.hexdigest()
         return HKY
 
     def __init__(self, user, *args, **kwargs):
-        self.user_w = kwargs.pop('user', None)
+        self.user_w = user
         super(WeightForm, self).__init__(*args, **kwargs)
 
     class Meta:
@@ -67,7 +67,7 @@ class AdditionsForm(forms.ModelForm):
         return cleaned_data
 
     def calc_hash(self, username, date):
-        hash_obj = hashlib.md5((username + date).encode())
+        hash_obj = hashlib.md5((username + str(date)).encode())
         HKY = hash_obj.hexdigest()
         return HKY
 
@@ -82,5 +82,5 @@ class AdditionsForm(forms.ModelForm):
             queryset_date_interval = date.today() - timedelta(days=21)
             query_set = Weight.objects.filter(date__gte=queryset_date_interval).order_by('-date')
         self.fields['date'].queryset = query_set
-        self.user_a = kwargs.pop('user', None)
+        self.user_a = user
 
