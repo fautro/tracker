@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My own little weight Tracker</title>
+</head>
+<body>
+    <h1>Weight tracker.. </h1>
+    <div>
+        ..is about to land! <br>
+        minor change for the test.
+    </div>
+    <div>
+        {% if records %}
+        <table style="width:40%">
+            <tr>
+                <th>Date</th>
+                <th>Morning Weight</th>
+                <th>Evening Weight</th>
+                <th>Hours of Sleep</th>
+                <th>Calories Consumed</th>
+                <th>Climbing Session</th>
+                <th>Gym Session</th>
+                <th>Alcohol</th>
+            </tr>
+            {% for record in records %}
+                <tr>
+                <td>{{ record.date }}</td>
+                <td>{{ record.morning_weight }}</td>
+                <td>{{ record.additions__evening_weight }}</td>
+                <td>{{ record.additions__sleep_hours }}</td>
+                <td>{{ record.additions__calories_consumed}}</td>
+                <td>{{ record.additions__climbing_flag }}</td>
+                <td>{{ record.additions__gym_flag }}</td>
+                <td>{{ record.additions__alco_flag }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <strong>No records available.</strong>
+        {% endif %}
+    </div>
+
+    <div>
+        <a href="/wtrack/about/"> About.</a><br>
+    </div>
+</body>
+</html>

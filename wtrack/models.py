@@ -1,8 +1,16 @@
 from django.db import models
 import datetime as dt
 
-class Record(models.Model):
+class Weight(models.Model):
+    date = models.DateField(auto_now=False, auto_now_add=False, primary_key=True)
+    morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return str(self.date)
+
+class Additions(models.Model):
     CLIMBING_FLAGS = (
+        ('R', 'Rest'),
         ('B', 'Bouldering'),
         ('BM', 'Bouldering on Moonboard'),
         ('L', 'Lead'),
@@ -10,6 +18,7 @@ class Record(models.Model):
     )
 
     GYM_FLAGS = (
+        ('R', 'Rest'),
         ('L', 'Leg Day'),
         ('LS', 'Leg Day Short'),
         ('U', 'Upper Body Day'),
@@ -23,7 +32,11 @@ class Record(models.Model):
         ('N', 'NO')
     )
 
-    date = models.DateField(auto_now=False, auto_now_add=False, primary_key=True)
+    date = models.OneToOneField(
+        Weight,
+        on_delete=models.CASCADE
+    )
+    evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = models.SmallIntegerField()
     calories_consumed = models.SmallIntegerField()
@@ -38,24 +51,3 @@ class Record(models.Model):
     ##    day_nr = dt.datetime.weekday(date)
     ##    day_arr = ['Mo', 'Tue', 'Wed', 'Thu', 'Fr', 'Sat', 'Sun']
     ##    return day_arr[day_nr]
-
-
-class MorningWeight(models.Model):
-    date = models.OneToOneField(
-        Record,
-        on_delete=models.CASCADE
-    )
-    morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
-
-    def __str__(self):
-        return str(self.date)
-
-class EveningWeight(models.Model):
-    date = models.OneToOneField(
-        Record,
-        on_delete=models.CASCADE
-    )
-    evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
-
-    def __str__(self):
-        return str(self.date)
