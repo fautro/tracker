@@ -73,7 +73,7 @@ class AdditionsForm(forms.ModelForm):
     class Meta:
         model = Additions
         exclude = ()
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         queryset_date_interval = date.today() - timedelta(days=14)
         query_set = Weight.objects.filter(date__gte = queryset_date_interval).order_by('-date')
@@ -81,5 +81,5 @@ class AdditionsForm(forms.ModelForm):
             queryset_date_interval = date.today() - timedelta(days=21)
             query_set = Weight.objects.filter(date__gte=queryset_date_interval).order_by('-date')
         self.fields['date'].queryset = query_set
-        self.user = kwargs.pop('user', None)
+        ##self.user = kwargs.pop('user', None)
 
