@@ -19,7 +19,7 @@ class WeightForm(forms.ModelForm):
         HKY = hash_obj.hexdigest()
         return HKY
 
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super(WeightForm, self).__init__(*args, **kwargs)
 
