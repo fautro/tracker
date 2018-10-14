@@ -4,7 +4,7 @@ import datetime as dt
 
 class Weight(models.Model):
     HKY = models.CharField(max_length=32, primary_key=True)
-    user = models.ForegnKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateField(auto_now=False, auto_now_add=False)
     morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
