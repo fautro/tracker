@@ -82,4 +82,4 @@ class AdditionsForm(forms.ModelForm):
             query_set = Weight.objects.filter(date__gte=queryset_date_interval).order_by('-date')
         self.fields['date'].queryset = query_set
         self.user = kwargs.pop('user', None)
-        super(AdditionsForm, self).__init__(*args, **kwargs)
+
