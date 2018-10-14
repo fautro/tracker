@@ -19,7 +19,7 @@ class WeightForm(forms.ModelForm):
         HKY = hash_obj.hexdigest()
         return HKY
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user, *args, **kwargs):
         self.user_w = kwargs.pop('user', None)
         super(WeightForm, self).__init__(*args, **kwargs)
 
@@ -73,7 +73,7 @@ class AdditionsForm(forms.ModelForm):
     class Meta:
         model = Additions
         exclude = ()
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         queryset_date_interval = date.today() - timedelta(days=14)
         query_set = Weight.objects.filter(date__gte = queryset_date_interval).order_by('-date')
