@@ -1,12 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
 import datetime as dt
 
 class Weight(models.Model):
-    date = models.DateField(auto_now=False, auto_now_add=False, primary_key=True)
+    HKY = models.CharField(max_length=32, primary_key=True)
+    user = models.ForegnKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateField(auto_now=False, auto_now_add=False)
     morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return str(self.date)
+        return str(self.HKY)
 
 class Additions(models.Model):
     CLIMBING_FLAGS = (
@@ -32,10 +35,8 @@ class Additions(models.Model):
         ('N', 'NO')
     )
 
-    date = models.OneToOneField(
-        Weight,
-        on_delete=models.CASCADE
-    )
+    HKY = models.OneToOneField(Weight, on_delete=models.CASCADE)
+    date = models.DateField(auto_now=False, auto_now_add=False)
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
     ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = models.SmallIntegerField()
@@ -45,7 +46,7 @@ class Additions(models.Model):
     alco_flag = models.CharField(max_length=1, choices=ALCO_FLAGS)
 
     def __str__(self):
-        return str(self.date)
+        return str(self.HKY)
 
     ##def day_of_week(self.date):
     ##    day_nr = dt.datetime.weekday(date)

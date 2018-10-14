@@ -1,10 +1,27 @@
 from django import forms
 from wtrack.models import Weight, Additions
 from datetime import date, timedelta
+from django.contrib.auth.models import User
 
 class WeightForm(forms.ModelForm):
     date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        date = cleaned_data['date']
+        cleaned_data['user'] = self.user
+        cleaned_data['HKY'] = self.calc_hash(self.user, date)
+        return cleaned_data
+
+    def calc_hash(self, username, date):
+        hash_obj = hashlib.md5((username + date).encode())
+        HKY = hash_obj.hexdigest()
+        return HKY
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(WeightForm, self).__init__(*args, **kwargs)
 
     class Meta:
         model = Weight
@@ -42,10 +59,21 @@ class AdditionsForm(forms.ModelForm):
     gym_flag = forms.CharField(max_length=2, widget=forms.Select(choices=GYM_FLAGS))
     alco_flag = forms.CharField(max_length=2, widget=forms.Select(choices=ALCO_FLAGS), required=True)
 
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        date = cleaned_data['date']
+        cleaned_data['HKY'] = self.calc_hash(self.user, date)
+        return cleaned_data
+
+    def calc_hash(self, username, date):
+        hash_obj = hashlib.md5((username + date).encode())
+        HKY = hash_obj.hexdigest()
+        return HKY
+
     class Meta:
         model = Additions
         exclude = ()
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         queryset_date_interval = date.today() - timedelta(days=14)
         query_set = Weight.objects.filter(date__gte = queryset_date_interval).order_by('-date')
@@ -53,3 +81,5 @@ class AdditionsForm(forms.ModelForm):
             queryset_date_interval = date.today() - timedelta(days=21)
             query_set = Weight.objects.filter(date__gte=queryset_date_interval).order_by('-date')
         self.fields['date'].queryset = query_set
+        self.user = kwargs.pop('user', None)
+        super(AdditionsForm, self).__init__(*args, **kwargs)
