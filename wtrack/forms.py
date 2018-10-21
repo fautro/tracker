@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 import hashlib
 
 class WeightForm(forms.ModelForm):
-    HKY = forms.CharField(required=True)
-    user = forms.CharField(required=True)
+    HKY = forms.CharField(widget=forms.HiddenInput(), required=True)
+    user = forms.CharField(widget=forms.HiddenInput(),required=True)
     date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
@@ -28,7 +28,7 @@ class WeightForm(forms.ModelForm):
 
     class Meta:
         model = Weight
-        exclude = ('HKY', 'user')
+        exclude = ()
 
 class AdditionsForm(forms.ModelForm):
     CLIMBING_FLAGS = (
