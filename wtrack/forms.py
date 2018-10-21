@@ -5,13 +5,15 @@ from django.contrib.auth.models import User
 import hashlib
 
 class WeightForm(forms.ModelForm):
+    HKY = clean().cleaned_data['HKY']
+    user = self.user_w
     date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
     def clean(self):
         cleaned_data = self.cleaned_data
-        date = cleaned_data['date']
-        cleaned_data['user'] = self.user_w
+        date = cleaned_data.get('date')
+        cleaned_data['user'] = 'Fautor'
         cleaned_data['HKY'] = self.calc_hash(self.user_w.username, date)
         return cleaned_data
 
@@ -62,7 +64,7 @@ class AdditionsForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = self.cleaned_data
-        date = cleaned_data['date']
+        date = cleaned_data.get('date')
         cleaned_data['HKY'] = self.calc_hash(self.user_a.username, date)
         return cleaned_data
 
