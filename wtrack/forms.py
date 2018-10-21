@@ -17,8 +17,6 @@ class WeightForm(forms.ModelForm):
         cleaned_data['user'] = self.user_w
         HKY = self.calc_hash(self.user_w.username, date)
         cleaned_data['HKY'] = HKY
-        WeightForm.instance.user = self.user_w
-        WeightForm.instance.HKY = HKY
 
         return super(WeightForm, self).clean()
 
