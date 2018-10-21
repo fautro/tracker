@@ -12,7 +12,7 @@ class WeightForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = self.cleaned_data
-        for form in self.forms:
+        for form in self.WeightForm:
             date = form.cleaned_data.get('date')
             form.cleaned_data['user'] = self.user_w
             HKY = self.calc_hash(self.user_w.username, date)
