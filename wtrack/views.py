@@ -42,7 +42,7 @@ def add_record(request):
         additions_form = AdditionsForm(request.user, request.POST)
         if 'submit_weight' in request.POST and weight_form.is_valid():
             weight_form.HKY = weight_form.cleaned_data['HKY']
-            weight_form.user = weight_form.cleaned_data['user']
+            weight_form.user = request.user
             weight_form.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
