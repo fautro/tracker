@@ -28,7 +28,7 @@ class WeightForm(forms.ModelForm):
 
     class Meta:
         model = Weight
-        exclude = ()
+        exclude = ('HKY', 'user')
 
 class AdditionsForm(forms.ModelForm):
     CLIMBING_FLAGS = (
