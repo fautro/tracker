@@ -26,7 +26,7 @@ class WeightForm(forms.ModelForm):
 
     class Meta:
         model = Weight
-        exclude = ()
+        exclude = ('HKY', 'user')
 
 class AdditionsForm(forms.ModelForm):
     CLIMBING_FLAGS = (
@@ -73,7 +73,7 @@ class AdditionsForm(forms.ModelForm):
 
     class Meta:
         model = Additions
-        exclude = ()
+        exclude = ('HKY')
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         queryset_date_interval = date.today() - timedelta(days=14)
