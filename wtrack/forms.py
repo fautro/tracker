@@ -73,7 +73,8 @@ class AdditionsForm(forms.ModelForm):
 
     class Meta:
         model = Additions
-        exclude = ('HKY')
+        exclude = ('HKY',)
+
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         queryset_date_interval = date.today() - timedelta(days=14)
