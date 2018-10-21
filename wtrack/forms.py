@@ -20,7 +20,7 @@ class WeightForm(forms.ModelForm):
         WeightForm.instance.user = self.user_w
         WeightForm.instance.HKY = HKY
 
-        return cleaned_data
+        return super(WeightForm, self).clean()
 
     def calc_hash(self, username, date):
         hash_obj = hashlib.md5((username + str(date)).encode())
