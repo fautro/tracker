@@ -12,7 +12,7 @@ class WeightForm(forms.ModelForm):
         cleaned_data = self.cleaned_data
         date = cleaned_data['date']
         cleaned_data['user'] = self.user_w
-        cleaned_data['HKY'] = self.calc_hash(self.user_w, date)
+        cleaned_data['HKY'] = self.calc_hash(self.user_w.username, date)
         return cleaned_data
 
     def calc_hash(self, username, date):
@@ -63,7 +63,7 @@ class AdditionsForm(forms.ModelForm):
     def clean(self):
         cleaned_data = self.cleaned_data
         date = cleaned_data['date']
-        cleaned_data['HKY'] = self.calc_hash(self.user_a, date)
+        cleaned_data['HKY'] = self.calc_hash(self.user_a.username, date)
         return cleaned_data
 
     def calc_hash(self, username, date):
