@@ -7,8 +7,8 @@ import hashlib
 class WeightForm(forms.ModelForm):
     HKY = forms.CharField()
     user = forms.CharField()
-    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
-    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
+    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=False)
+    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=False)
 
     ##def clean(self):
     ##    cleaned_data = self.cleaned_data
