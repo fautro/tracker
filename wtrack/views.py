@@ -39,7 +39,7 @@ def add_record(request):
 
     if request.method == 'POST':
         post = request.POST.copy()
-        post.update({'HKY' : ''})
+        post.update({'HKY' : 'lkj1231lkj12312jlkj123'})
         post.update({'user' : request.user})
         weight_form = WeightForm(request.user, data = post)
         additions_form = AdditionsForm(request.user, request.POST)
