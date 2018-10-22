@@ -41,8 +41,8 @@ def add_record(request):
         weight_form = WeightForm(request.POST)
         additions_form = AdditionsForm(request.user, request.POST)
         if 'submit_weight' in request.POST and weight_form.is_valid():
-            weight_form.save(commit=False)
-            weight_form = weight_form.cleaned_data
+            #weight_form.save(commit=False)
+            #weight_form = weight_form.cleaned_data
             weight_form.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
