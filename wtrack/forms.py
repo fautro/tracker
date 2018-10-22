@@ -5,10 +5,6 @@ from django.contrib.auth.models import User
 import hashlib
 
 class WeightForm(forms.ModelForm):
-    #HKY = forms.CharField()
-    user = __init__.user
-    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
-    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
     def clean(self):
         cleaned_data = self.cleaned_data
@@ -28,6 +24,12 @@ class WeightForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         self.user_w = user
         super(WeightForm, self).__init__(*args, **kwargs)
+
+        # HKY = forms.CharField()
+
+    user = clean().cleaned_data['user']
+    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
+    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
     class Meta:
         model = Weight
