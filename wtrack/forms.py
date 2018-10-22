@@ -7,18 +7,18 @@ import hashlib
 class WeightForm(forms.ModelForm):
     HKY = forms.CharField()
     user = forms.CharField()
-    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=False)
-    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=False)
+    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
+    morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
-    ##def clean(self):
-    ##    cleaned_data = self.cleaned_data
-##
-##        date = cleaned_data.get('date')
-##        cleaned_data['user'] = self.user_w
-##        HKY = self.calc_hash(self.user_w.username, date)
-##        cleaned_data['HKY'] = HKY
+    def clean(self):
+        cleaned_data = self.cleaned_data
 
-##        return super(WeightForm, self).clean()
+        date = cleaned_data.get('date')
+        cleaned_data['user'] = self.user_w
+        HKY = self.calc_hash(self.user_w.username, date)
+        cleaned_data['HKY'] = HKY
+
+        return cleaned_data
 
     def calc_hash(self, username, date):
         hash_obj = hashlib.md5((username + str(date)).encode())
