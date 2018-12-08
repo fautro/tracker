@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from wtrack.models import Weight
 from wtrack.forms import WeightForm, AdditionsForm
 from django.contrib.auth.decorators import login_required
-import hashlib, datetime
 
 
 @login_required
@@ -39,12 +38,12 @@ def add_record(request):
     context = {}
 
     if request.method == 'POST':
-        weight_form = WeightForm(request.POST)
-        additions_form = AdditionsForm(request.POST)
+        weight_form = WeightForm(request.user, request.POST)
+        additions_form = AdditionsForm(request.user, request.POST)
         if 'submit_weight' in request.POST and weight_form.is_valid():
             weight = weight_form.save(commit=False)
             weight.user = request.user
-            #weight.HKY = 'asdqweasd'
+            weight.HKY = 'asdasdasdasddas'
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
