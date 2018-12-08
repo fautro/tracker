@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from wtrack.models import Weight
 from wtrack.forms import WeightForm, AdditionsForm
 from django.contrib.auth.decorators import login_required
+import hashlib
 
 
 @login_required
