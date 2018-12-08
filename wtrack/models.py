@@ -38,7 +38,6 @@ class Additions(models.Model):
     HKY = models.OneToOneField(Weight, on_delete=models.CASCADE)
     date = models.DateField(auto_now=False, auto_now_add=False)
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
-    ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = models.SmallIntegerField()
     calories_consumed = models.SmallIntegerField()
     climbing_flag = models.CharField(max_length=2, choices=CLIMBING_FLAGS)
