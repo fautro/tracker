@@ -44,7 +44,8 @@ class AdditionsForm(forms.ModelForm):
         ('N', 'NO')
     )
 
-    date = forms.ModelChoiceField(queryset=None)
+    #date = forms.ModelChoiceField(queryset=None)
+    forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
     climbing_flag = forms.CharField(max_length=2, widget=forms.Select(choices=CLIMBING_FLAGS))
