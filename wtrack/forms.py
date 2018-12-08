@@ -2,7 +2,6 @@ from django import forms
 from wtrack.models import Weight, Additions
 from datetime import date, timedelta
 from django.contrib.auth.models import User
-import hashlib
 
 class WeightForm(forms.ModelForm):
     #HKY = 'asdasdasdasdasdasdasd'
@@ -17,11 +16,6 @@ class WeightForm(forms.ModelForm):
         HKY = self.calc_hash(self.user_w.username, date)
         cleaned_data['HKY'] = HKY
         return cleaned_data
-
-    def calc_hash(self, username, date):
-        hash_obj = hashlib.md5((username + str(date)).encode())
-        HKY = hash_obj.hexdigest()
-        return HKY
 
     def __init__(self, user, *args, **kwargs):
         self.user_w = user

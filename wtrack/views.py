@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from wtrack.models import Weight
 from wtrack.forms import WeightForm, AdditionsForm
 from django.contrib.auth.decorators import login_required
+import hashlib
 
 
 @login_required
@@ -43,7 +44,7 @@ def add_record(request):
         if 'submit_weight' in request.POST and weight_form.is_valid():
             weight = weight_form.save(commit=False)
             weight.user = request.user
-            weight.HKY = 'asdasdasdasddas'
+            weight.HKY = 'asdasdasdasddas111'
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
@@ -55,3 +56,8 @@ def add_record(request):
     context['weight'] = weight_form
     context['additions'] = additions_form
     return render(request, 'wtrack/add_record.html', context)
+
+def calc_hash(self, username, date):
+    hash_obj = hashlib.md5((username + str(date)).encode())
+    HKY = hash_obj.hexdigest()
+    return HKY
