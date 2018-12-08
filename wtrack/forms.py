@@ -44,7 +44,7 @@ class AdditionsForm(forms.ModelForm):
         ('N', 'NO')
     )
 
-    date = forms.ModelChoiceField(queryset=None, to_field_name = 'date')
+    date = forms.ModelChoiceField(queryset=__init__.queryset, to_field_name = 'date')
     #date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
@@ -67,6 +67,6 @@ class AdditionsForm(forms.ModelForm):
         if query_set.count() < 14:
             queryset_date_interval = date.today() - timedelta(days=21)
             query_set = Weight.objects.filter(date__gte=queryset_date_interval).order_by('-date')
-        self.fields['date'].queryset = query_set
+        self.queryset = query_set
         self.user_a = user
 
