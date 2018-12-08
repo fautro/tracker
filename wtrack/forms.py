@@ -6,18 +6,16 @@ import hashlib
 
 class WeightForm(forms.ModelForm):
     HKY = 'asdasdasdasdasdasdasd'
-    #user = forms.CharField()
+    #user = forms.OneToManyField(User)
     date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
     def clean(self):
         cleaned_data = self.cleaned_data
-
         date = cleaned_data.get('date')
         cleaned_data['user'] = self.user_w
         HKY = self.calc_hash(self.user_w.username, date)
         cleaned_data['HKY'] = HKY
-
         return cleaned_data
 
     def calc_hash(self, username, date):
