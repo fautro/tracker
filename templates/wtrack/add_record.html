@@ -78,6 +78,12 @@
                   <br><br><br>
                  <form id="additions_form" method="post" action="">
                   {% csrf_token %}
+                 <p>{{ additions.date }}
+                 <p>{{ additions.sleep_hours }}
+                 <p>{{ additions.calories_consumed }}
+                 <p>{{ additions.climbing_flag }}
+                 <p>{{ additions.gym_flag }}
+                 <p>{{ additions.alco_flag }}
 
                  <input type="submit" name="submit_addition" value="Submit Additional Fields" />
                  </form>

@@ -45,7 +45,6 @@ class AdditionsForm(forms.ModelForm):
     )
 
     date = forms.ModelChoiceField(queryset=None)
-    ## day = models.CharField(max_length=3, default=day_of_week(date))
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
     climbing_flag = forms.CharField(max_length=2, widget=forms.Select(choices=CLIMBING_FLAGS))
@@ -54,14 +53,7 @@ class AdditionsForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = self.cleaned_data
-        date = cleaned_data.get('date')
-        cleaned_data['HKY'] = self.calc_hash(self.user_a.username, date)
         return cleaned_data
-
-    def calc_hash(self, username, date):
-        hash_obj = hashlib.md5((username + str(date)).encode())
-        HKY = hash_obj.hexdigest()
-        return HKY
 
     class Meta:
         model = Additions
