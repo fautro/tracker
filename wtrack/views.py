@@ -44,7 +44,7 @@ def add_record(request):
         if 'submit_weight' in request.POST and weight_form.is_valid():
             weight = weight_form.save(commit=False)
             weight.user = request.user
-            ##weight.HKY = 'asdqweasd'
+            weight.HKY = 'asdqweasd'
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
@@ -56,4 +56,3 @@ def add_record(request):
     context['weight'] = weight_form
     context['additions'] = additions_form
     return render(request, 'wtrack/add_record.html', context)
-
