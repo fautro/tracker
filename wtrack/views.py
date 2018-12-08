@@ -57,15 +57,3 @@ def add_record(request):
     context['additions'] = additions_form
     return render(request, 'wtrack/add_record.html', context)
 
-def clean(self):
-    cleaned_data = self.cleaned_data
-    date = cleaned_data.get('date')
-    cleaned_data['user'] = self.user_w
-    HKY = self.calc_hash(self.user_w.username, date)
-    cleaned_data['HKY'] = HKY
-    return cleaned_data
-
-def calc_hash(username, date):
-    hash_obj = hashlib.md5((username + str(date)).encode())
-    HKY = hash_obj.hexdigest()
-    return HKY
