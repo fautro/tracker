@@ -57,7 +57,7 @@ def add_record(request):
     context['additions'] = additions_form
     return render(request, 'wtrack/add_record.html', context)
 
-def calc_hash(self, username, date):
+def calc_hash(username, date):
     hash_obj = hashlib.md5((username + str(date)).encode())
     HKY = hash_obj.hexdigest()
     return HKY

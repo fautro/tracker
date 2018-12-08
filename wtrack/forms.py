@@ -9,13 +9,13 @@ class WeightForm(forms.ModelForm):
     date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
-    def clean(self):
-        cleaned_data = self.cleaned_data
-        date = cleaned_data.get('date')
-        cleaned_data['user'] = self.user_w
-        HKY = self.calc_hash(self.user_w.username, date)
-        cleaned_data['HKY'] = HKY
-        return cleaned_data
+    ##def clean(self):
+    ##    cleaned_data = self.cleaned_data
+    #    date = cleaned_data.get('date')
+    #    cleaned_data['user'] = self.user_w
+    #    HKY = self.calc_hash(self.user_w.username, date)
+    #    cleaned_data['HKY'] = HKY
+    #    return cleaned_data
 
     def __init__(self, user, *args, **kwargs):
         self.user_w = user
