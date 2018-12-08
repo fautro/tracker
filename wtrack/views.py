@@ -44,7 +44,7 @@ def add_record(request):
         if 'submit_weight' in request.POST and weight_form.is_valid():
             weight = weight_form.save(commit=False)
             weight.user = request.user
-            weight.HKY = '0D3409EDB95191D5AF6170F74DFB6C62'
+            weight.HKY = calc_hash('Fautor', '2018-01-01')
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions_form.save()
@@ -57,7 +57,7 @@ def add_record(request):
     context['additions'] = additions_form
     return render(request, 'wtrack/add_record.html', context)
 
-def calc_hash(self, username, date):
+def calc_hash(username, date):
     hash_obj = hashlib.md5((username + str(date)).encode())
     HKY = hash_obj.hexdigest()
     return HKY
