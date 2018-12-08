@@ -10,6 +10,14 @@ class WeightForm(forms.ModelForm):
     date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        return cleaned_data
+
+    def __init__(self, user, *args, **kwargs):
+        self.user_w = user
+        super(WeightForm, self).__init__(*args, **kwargs)
+
     class Meta:
         model = Weight
         exclude = ('HKY', 'user')
