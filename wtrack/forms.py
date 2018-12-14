@@ -67,6 +67,6 @@ class AdditionsForm(forms.ModelForm):
         if query_set.count() < 14:
             queryset_date_interval = date.today() - timedelta(days=21)
             query_set = Weight.objects.filter(date__gte=queryset_date_interval).order_by('-date')
-        self.fields['date'].queryset = query_set
+        self.fields['HKY'].queryset = query_set
         self.user_a = user
 

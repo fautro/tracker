@@ -52,7 +52,7 @@ def add_record(request):
             addition = additions_form.save(commit=False)
             #addition.user = request.user
             #concat_date = request.POST['date_year']+request.POST['date_month']+request.POST['date_day']
-            addition.date = date.today()
+            #addition.date = date.today()
             #addition.HKY = calc_hash(request.user.username, concat_date)
             addition.save()
 
