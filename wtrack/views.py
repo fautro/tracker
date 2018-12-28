@@ -54,7 +54,7 @@ def add_record(request):
             #split_date = request.POST['date'].split('-')
             concat_date = split_date[0] + split_date[1] + split_date[2]
             #concat_date = request.POST['date_year'] + request.POST['date_month'] + request.POST['date_day']
-            #addition.date = date.today()
+            addition.date = date.today()
             addition.HKY = 'dc0fa6d214ec74d3b652b6263ed49b34'#calc_hash(request.user.username, concat_date)
             addition.save()
 
