@@ -50,10 +50,10 @@ def add_record(request):
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             addition = additions_form.save(commit=False)
-            addition.user = request.user
-            concat_date = request.POST['date_year']+request.POST['date_month']+request.POST['date_day']
-            addition.date = 'asdasd'#date.today()
-            addition.HKY = calc_hash(request.user.username, concat_date)
+            #addition.user = request.user
+            #concat_date = request.POST['date_year']+request.POST['date_month']+request.POST['date_day']
+            #addition.date = 'asdasd'#date.today()
+            #addition.HKY = calc_hash(request.user.username, concat_date)
             addition.save()
 
     else:
