@@ -55,9 +55,9 @@ class AdditionsForm(forms.ModelForm):
     gym_flag = forms.CharField(max_length=2, widget=forms.Select(choices=GYM_FLAGS))
     alco_flag = forms.CharField(max_length=2, widget=forms.Select(choices=ALCO_FLAGS), required=True)
 
-    #def clean(self):
-    #    cleaned_data = self.cleaned_data
-    #    return cleaned_data
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        return cleaned_data
 
     class Meta:
         model = Additions
