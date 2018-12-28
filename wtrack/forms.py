@@ -47,7 +47,7 @@ class AdditionsForm(forms.ModelForm):
     HKY = forms.ModelChoiceField(queryset=None,
                                  #to_field_name = 'date',
                                  required=True)
-    #date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today())
+    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today())
     evening_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
@@ -61,7 +61,7 @@ class AdditionsForm(forms.ModelForm):
 
     class Meta:
         model = Additions
-        exclude = ('HKY',)
+        exclude = ()#'HKY',)
 
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
