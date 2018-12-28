@@ -46,6 +46,7 @@ class AdditionsForm(forms.ModelForm):
 
     HKY = forms.ModelChoiceField(queryset=None, to_field_name = 'date')
     #date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
+    evening_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
     climbing_flag = forms.CharField(max_length=2, widget=forms.Select(choices=CLIMBING_FLAGS))
