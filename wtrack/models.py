@@ -35,7 +35,7 @@ class Additions(models.Model):
         ('N', 'NO')
     )
 
-    HKY = models.OneToOneField(Weight, on_delete=models.CASCADE)
+    HKY = models.ForeignKey(Weight, on_delete=models.CASCADE)#OneToOneField(Weight, on_delete=models.CASCADE)
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
     sleep_hours = models.SmallIntegerField()
     calories_consumed = models.SmallIntegerField()
