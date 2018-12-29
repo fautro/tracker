@@ -50,7 +50,7 @@ def add_record(request):
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             addition = additions_form.save(commit=False)
-            addition.date = dt.strptime(request.POST['HKY'], '%Y-%m-%d')
+            #addition.date = dt.strptime(request.POST['HKY'], '%Y-%m-%d')
             addition.save()
 
     else:
