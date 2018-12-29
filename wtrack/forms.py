@@ -44,10 +44,11 @@ class AdditionsForm(forms.ModelForm):
         ('N', 'NO')
     )
 
-    HKY = forms.ModelChoiceField(queryset=None,
-                                 to_field_name = 'date',
+    #HKY
+    date = forms.ModelChoiceField(queryset=None,
+                                 #to_field_name = 'date',
                                  required=True)
-    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today())
+    #date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today())
     evening_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
     sleep_hours = forms.IntegerField()
     calories_consumed = forms.IntegerField()
