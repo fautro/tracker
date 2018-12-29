@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import datetime as dt
 
 class Weight(models.Model):
-    HKY = models.CharField(max_length=32, primary_key=True, default='6BB61E3B7BCE0931DA574D19D1D82C88')
+    HKY = models.CharField(max_length=32, primary_key=True)#, default='6BB61E3B7BCE0931DA574D19D1D82C88')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateField(auto_now=False, auto_now_add=False)
     morning_weight = models.DecimalField(max_digits=5, decimal_places=2)

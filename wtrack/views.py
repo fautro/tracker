@@ -49,9 +49,7 @@ def add_record(request):
             weight.HKY = calc_hash(request.user.username, concat_date)
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
-            addition = additions_form.save(commit=False)
-            #addition.date = dt.strptime(request.POST['HKY'], '%Y-%m-%d')
-            addition.save()
+            additions_form.save()
 
     else:
         weight_form = WeightForm(request.POST)
