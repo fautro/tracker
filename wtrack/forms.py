@@ -46,7 +46,7 @@ class AdditionsForm(forms.ModelForm):
 
     #HKY
     date = forms.ModelChoiceField(queryset=None,
-                                 #to_field_name = 'date',
+                                 to_field_name = 'HKY',
                                  required=True)
     #date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today())
     evening_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
@@ -71,6 +71,6 @@ class AdditionsForm(forms.ModelForm):
         if query_set.count() < 14:
             queryset_date_interval = date.today() - timedelta(days=21)
             query_set = Weight.objects.filter(date__gte=queryset_date_interval).order_by('-date')
-        self.fields['HKY'].queryset = query_set
+        self.fields['date'].queryset = query_set
         self.user_a = user
 
