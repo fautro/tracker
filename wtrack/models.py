@@ -9,7 +9,7 @@ class Weight(models.Model):
     morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return str(self.HKY)
+        return str(self.date)
 
 class Additions(models.Model):
     CLIMBING_FLAGS = (
