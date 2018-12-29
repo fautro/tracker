@@ -51,7 +51,7 @@ def add_record(request):
         if 'submit_addition' in request.POST and additions_form.is_valid():
             addition = additions_form.save(commit=False)
             addition.HKY_id = request.POST['HKY']
-            addition.save()#force_update=True)
+            addition.save(force_update=True)
 
     else:
         weight_form = WeightForm(request.POST)
