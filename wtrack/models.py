@@ -44,7 +44,7 @@ class Additions(models.Model):
     alco_flag = models.CharField(max_length=1, choices=ALCO_FLAGS)
 
     def __str__(self):
-        return str(self.date)
+        return str(self.HKY)
 
     ##def day_of_week(self.date):
     ##    day_nr = dt.datetime.weekday(date)
