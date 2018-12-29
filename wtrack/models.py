@@ -36,7 +36,6 @@ class Additions(models.Model):
     )
 
     HKY = models.OneToOneField(Weight, on_delete=models.CASCADE)
-    #date = models.DateField(auto_now=False, auto_now_add=False)
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
     sleep_hours = models.SmallIntegerField()
     calories_consumed = models.SmallIntegerField()
@@ -45,7 +44,7 @@ class Additions(models.Model):
     alco_flag = models.CharField(max_length=1, choices=ALCO_FLAGS)
 
     def __str__(self):
-        return str(self.HKY)
+        return str(self.date)
 
     ##def day_of_week(self.date):
     ##    day_nr = dt.datetime.weekday(date)
