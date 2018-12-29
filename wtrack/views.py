@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from wtrack.models import Weight
 from wtrack.forms import WeightForm, AdditionsForm
 import hashlib
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime as dt
 from django.contrib.auth.decorators import login_required
 
 
@@ -50,12 +50,7 @@ def add_record(request):
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             addition = additions_form.save(commit=False)
-            #addition.date = request.POST['HKY']
-            #split_date = request.POST['date'].split('-')
-            #concat_date = split_date[0] + split_date[1] + split_date[2]
-            #concat_date = request.POST['date_year'] + request.POST['date_month'] + request.POST['date_day']
-            addition.date = date.today()
-            #addition.HKY_id = 'dc0fa6d214ec74d3b652b6263ed49b34'#calc_hash(request.user.username, concat_date)
+            addition.date = dt.strptime(request.POST['HKY'], '%Y-%m-%d')
             addition.save()
 
     else:
