@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from wtrack.models import Weight
+from wtrack.models import Weight, Additions
 from wtrack.forms import WeightForm, AdditionsForm
 import hashlib
 from datetime import date, timedelta, datetime as dt
@@ -39,6 +39,11 @@ def add_record(request):
 
     context = {}
 
+    try:
+        additions_instance = Additions.objects.get(HKY=request.POST['HKY'])
+    except Additions.DoesNotExist:
+        additions_instance = Additions(HKY=request.POST['HKY'])
+
     if request.method == 'POST':
         weight_form = WeightForm(request.user, request.POST)
         additions_form = AdditionsForm(request.user, request.POST)
@@ -50,6 +55,7 @@ def add_record(request):
             weight.save()
         if 'submit_addition' in request.POST and additions_form.is_valid():
             additions = additions_form.save(commit=False)
+            additions.HKY = request.POST['HKY']
             additions.save()
 
     else:
