@@ -39,24 +39,25 @@ def add_record(request):
 
     context = {}
 
-    try:
-        additions_instance = Additions.objects.get(HKY=request.POST['HKY'])
-    except Additions.DoesNotExist:
-        additions_instance = Additions(user=request.user)
-
     if request.method == 'POST':
         weight_form = WeightForm(request.user, request.POST)
-        additions_form = AdditionsForm(request.user, request.POST, instance=additions_instance)
+        #additions_form = AdditionsForm(request.user, request.POST, instance=additions_instance)
         if 'submit_weight' in request.POST and weight_form.is_valid():
             weight = weight_form.save(commit=False)
             weight.user = request.user
             concat_date = request.POST['date_year']+request.POST['date_month']+request.POST['date_day']
             weight.HKY = calc_hash(request.user.username, concat_date)
             weight.save()
-        if 'submit_addition' in request.POST and additions_form.is_valid():
-            additions = additions_form.save(commit=False)
-            #additions.HKY = request.POST['HKY']
-            additions.save()
+        if 'submit_addition' in request.POST: #and additions_form.is_valid():
+            try:
+                additions_instance = Additions.objects.get(HKY=request.POST['HKY'])
+            except Additions.DoesNotExist:
+                additions_instance = Additions(user=request.user)
+            additions_form = AdditionsForm(request.user, request.POST, instance=additions_instance)
+            if additions_form.is_valid():
+                additions = additions_form.save(commit=False)
+                #additions.HKY = request.POST['HKY']
+                additions.save()
 
     else:
         weight_form = WeightForm(request.POST)
