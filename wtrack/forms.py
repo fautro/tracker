@@ -6,7 +6,7 @@ from wtrack.models import Weight, Additions
 
 
 class WeightForm(forms.ModelForm):
-    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today, required=True)
+    date = forms.DateField(widget=forms.SelectDateWidget(), initial=date.today(), required=True)
     morning_weight = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
 
     def clean(self):
