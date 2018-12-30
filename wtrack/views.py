@@ -51,9 +51,10 @@ def add_record(request):
         if 'submit_addition' in request.POST: #and additions_form.is_valid():
             try:
                 additions_instance = Additions.objects.get(HKY=request.POST['HKY'])
-                #except Additions.DoesNotExist:
-                #    additions_instance = Additions(HKY=request.POST['HKY'])
                 additions_form = AdditionsForm(request.user, request.POST, instance=additions_instance)
+            except Additions.DoesNotExist:
+                additions_form = AdditionsForm(request.user, request.POST)
+
             if additions_form.is_valid():
                 additions = additions_form.save(commit=False)
                 #additions.HKY = request.POST['HKY']
