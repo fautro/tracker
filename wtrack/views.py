@@ -61,8 +61,8 @@ def add_record(request):
                 additions.save()
 
     else:
-        weight_form = WeightForm(request.POST)
-        additions_form = AdditionsForm(request.POST)
+        weight_form = WeightForm(request.user, request.POST)
+        additions_form = AdditionsForm(request.user, request.POST,)
 
     context['weight'] = weight_form
     context['additions'] = additions_form
