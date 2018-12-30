@@ -52,7 +52,7 @@ def add_record(request):
             try:
                 additions_instance = Additions.objects.get(HKY=request.POST['HKY'])
             except Additions.DoesNotExist:
-                additions_instance = Additions(HKY=request.POST['HKY'])
+                additions_instance = Weight(HKY=request.POST['HKY'])
             additions_form = AdditionsForm(request.user, request.POST, instance=additions_instance)
             if additions_form.is_valid():
                 additions = additions_form.save(commit=False)
