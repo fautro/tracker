@@ -9,7 +9,7 @@ class Weight(models.Model):
     morning_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return str(self.HKY)
+        return str(self.date)
 
 class Additions(models.Model):
     CLIMBING_FLAGS = (
@@ -35,7 +35,7 @@ class Additions(models.Model):
         ('N', 'NO')
     )
 
-    HKY = models.OneToOneField(Weight, on_delete=models.CASCADE)
+    HKY = models.ForeignKey(Weight, unique=True, on_delete=models.CASCADE)
     evening_weight = models.DecimalField(max_digits=5, decimal_places=2)
     sleep_hours = models.SmallIntegerField()
     calories_consumed = models.SmallIntegerField()
