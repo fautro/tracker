@@ -78,7 +78,7 @@
                    <p><input type="submit" name="submit_weight" value="Submit Morning Weight" /></p>
                 </form>
                   <br><br>
-                  <p class="lead"> Additional infrmation. </p>  
+                  <p class="lead"> Additional infrmation. </p>
                  <form id="additions_form" method="post" action="">
                   {% csrf_token %}
                     <p class="h6">Pick a date for additional info.</p>
@@ -91,7 +91,7 @@
                     <p>{{ additions.calories_consumed }}
                     <p class="h6">Pick a date.</p>
                     <p>{{ additions.alco_flag }}
-                    <br>
+                    <br><br>
                     <p class="lead"> Training notes. </p>
                     <p class="h6">Climbing workout.</p>
                     <p>{{ additions.climbing_flag }}
@@ -99,7 +99,7 @@
                     <p>{{ additions.gym_flag }}
 
 
-                 <input type="submit" name="submit_addition" value="Submit Additional Fields" />
+                 <p><input type="submit" name="submit_addition" value="Submit Additional Fields" />
                  </form>
            </p>
           </div>
