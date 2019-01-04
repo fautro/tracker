@@ -46,10 +46,10 @@
           </li>
         </ul> -->
 <!---------------------------------------------------------------------------------------------------------------------->
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-1" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        {# <form class="form-inline my-2 my-lg-0"> #}
+        {#  <input class="form-control mr-sm-1" type="text" placeholder="Search" aria-label="Search"> #}
+        {#  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> #}
+        {# </form> #}
       </div>
     </nav>
 <!----------------------------------------------------------------------------------------------------------------------->
@@ -71,21 +71,31 @@
             <p class="lead">
                 <form id="weight_form" method="post" action="">
                  {% csrf_token %}
-                 <p>{{ weight.date }}
-                 <p>{{ weight.morning_weight }}
-                <input type="submit" name="submit_weight" value="Submit Morning Weight" />
+                   <p class="h6">Pick a date.</p>
+                   <p>{{ weight.date }}
+                   <p class="h6">Enter morning weight.</p>
+                   <p>{{ weight.morning_weight }}</p>
+                   <p><input type="submit" name="submit_weight" value="Submit Morning Weight" /></p>
                 </form>
                   <br><br><br>
                  <form id="additions_form" method="post" action="">
                   {% csrf_token %}
-                 <p>{{ additions.HKY }}
-                 <!--<p>{{ additions.date }}-->
-                 <p>{{ additions.evening_weight }}
-                 <p>{{ additions.sleep_hours }}
-                 <p>{{ additions.calories_consumed }}
-                 <p>{{ additions.climbing_flag }}
-                 <p>{{ additions.gym_flag }}
-                 <p>{{ additions.alco_flag }}
+                    <p class="h6">Pick a date for additional info.</p>
+                    <p>{{ additions.HKY }}
+                    <p class="h6">Evening weight.</p>
+                    <p>{{ additions.evening_weight }}
+                    <p class="h6">Sleep hours.</p>
+                    <p>{{ additions.sleep_hours }}
+                    <p class="h6">Calories consumed.</p>
+                    <p>{{ additions.calories_consumed }}
+                    <p class="h6">Pick a date.</p>
+                    <p>{{ additions.alco_flag }}
+                    <p class="lead"> Training notes. </p>
+                    <p class="h6">Climbing workout.</p>
+                    <p>{{ additions.climbing_flag }}
+                    <p class="h6">Gym workout.</p>
+                    <p>{{ additions.gym_flag }}
+
 
                  <input type="submit" name="submit_addition" value="Submit Additional Fields" />
                  </form>

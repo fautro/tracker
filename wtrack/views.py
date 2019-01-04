@@ -1,10 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from wtrack.models import Weight, Additions
-from wtrack.forms import WeightForm, AdditionsForm
 import hashlib
-from datetime import date, timedelta, datetime as dt
+
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+from wtrack.forms import WeightForm, AdditionsForm
+from wtrack.models import Weight, Additions
 
 
 @login_required
@@ -57,7 +57,6 @@ def add_record(request):
 
             if additions_form.is_valid():
                 additions = additions_form.save(commit=False)
-                #additions.HKY = request.POST['HKY']
                 additions.save()
 
     else:
