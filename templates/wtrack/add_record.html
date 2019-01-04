@@ -64,7 +64,7 @@
           <div class="col-md">
             <h1>Submit new record.</h1>
           </div>
-      </div>
+      <!--</div>-->
           <div class="row">
             <div class="col-md">
               <p class="lead"> Or you can add additional fields to the existing one. </p>
@@ -78,7 +78,7 @@
                    <p><input type="submit" name="submit_weight" value="Submit Morning Weight" /></p>
                 </form>
                   <br><br>
-                  <p class="lead"> Additional infrmation. </p>
+                  <p class="lead"> Additional information. </p>
                  <form id="additions_form" method="post" action="">
                   {% csrf_token %}
                     <p class="h6">Pick a date for additional info.</p>
@@ -89,7 +89,7 @@
                     <p>{{ additions.sleep_hours }}
                     <p class="h6">Calories consumed.</p>
                     <p>{{ additions.calories_consumed }}
-                    <p class="h6">Pick a date.</p>
+                    <p class="h6">Any alcohol.</p>
                     <p>{{ additions.alco_flag }}
                     <br><br>
                     <p class="lead"> Training notes. </p>
@@ -103,6 +103,8 @@
                  </form>
            </p>
           </div>
+        </div>
+        
     </div>
 
     </main><!-- /.container -->
