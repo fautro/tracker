@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-wrap p-0">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
       {% if user.is_authenticated %}
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{% url 'index' %}">Weight Tracker for {{ user.username }}.</a>
       {% else %}
